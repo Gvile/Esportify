@@ -1,0 +1,51 @@
+﻿.single-event-body
+{
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caroussel
+{
+    width: 90%;
+    height: 300px;
+
+    border: 1px solid black;
+}
+
+.event-info
+{
+    width: 90%;
+    height: 300px;
+
+    display: flex;
+    flex-direction: row;
+
+    border: 1px solid gray;
+}
+
+.event-other-info
+{
+    width: 90%;
+    height: 300px;
+
+    border: 1px solid gray;
+}
+
+.event-info__info
+{
+    width: 70%;
+}
+
+.event-info__button-container
+{
+    width: 30%;
+}
+
+.event-info__button
+{
+    width: 90%;
+    height: 20px;
+}
