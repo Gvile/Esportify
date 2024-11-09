@@ -1,0 +1,90 @@
+﻿.global-event-body
+{
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.live-event
+{
+    width: 90%;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.live-event__event-container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    gap: 20px;
+}
+
+.upcomming-event
+{
+    width: 90%;
+
+    padding: 20px;
+
+    border: 1px solid black;
+}
+
+.live-event__event
+{
+    width: 100px;
+    height: 100px;
+    
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid gray;
+}
+
+.upcomming-event__event
+{
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    border: 1px solid gray;
+}
+
+
+.live-event__join-button
+{
+    width: 90%;
+    height: 25px;
+    
+    position: absolute;
+    bottom: 5px;
+}
+
+.upcomming-event__inscription-button, 
+.upcomming-event__edit-button
+{
+    width: 90%;
+    height: 25px;
+}
+.upcomming-event__left
+{
+    width: 70%;
+}
+
+.upcomming-event__right 
+{
+    width: 30%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin: 5px;
+}

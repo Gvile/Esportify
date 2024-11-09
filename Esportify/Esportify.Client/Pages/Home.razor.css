@@ -1,0 +1,62 @@
+﻿.home-body
+{
+    width: 100vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-body__description
+{
+    width: 60%;
+}
+
+.caroussel
+{
+    width: 90%;
+    height: 300px;
+    
+    border: 1px solid red;
+}
+
+.live-event
+{
+    width: 90%;
+
+    padding: 20px;
+
+    border: 1px solid black;
+}
+
+.upcoming-event
+{
+    width: 90%;
+
+    padding: 20px;
+
+    border: 1px solid black;
+}
+
+.live-event__event
+{
+    width: 100%;
+    height: 40px;
+    
+    border: 1px solid gray;
+}
+
+.upcoming-event__event
+{
+    width: 100%;
+    height: 40px;
+    
+    border: 1px solid gray;
+}
+
+.live-event__button-more,
+.upcoming-event__button-more
+{
+    width: 200px;
+    height: 40px;
+}
