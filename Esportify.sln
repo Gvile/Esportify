@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esportify", "Esportify\Espo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esportify.Client", "Esportify\Esportify.Client\Esportify.Client.csproj", "{788BE37C-5A2A-436E-84F4-96ACABCA031D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esportify.Api", "Esportify.Api\Esportify.Api.csproj", "{4B9822CB-C31B-4122-9400-96F0E9060301}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{788BE37C-5A2A-436E-84F4-96ACABCA031D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{788BE37C-5A2A-436E-84F4-96ACABCA031D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{788BE37C-5A2A-436E-84F4-96ACABCA031D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9822CB-C31B-4122-9400-96F0E9060301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9822CB-C31B-4122-9400-96F0E9060301}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9822CB-C31B-4122-9400-96F0E9060301}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9822CB-C31B-4122-9400-96F0E9060301}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

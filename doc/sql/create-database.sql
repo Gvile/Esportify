@@ -36,7 +36,7 @@ CREATE TABLE "EventStatus" (
 
 CREATE TABLE "EventUser" (
                              "EventId" int,
-                             "User" int
+                             "UserId" int
 );
 
 CREATE TABLE "Role" (
