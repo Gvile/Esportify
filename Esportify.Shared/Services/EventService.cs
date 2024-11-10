@@ -15,7 +15,7 @@ public class EventService : IEventService
         _baseUrl = "https://localhost:7102/events";
     }
 
-    public async Task<List<EventModel>> GetAllEventsAsync()
+    public async Task<List<EventModel>> GetAllAsync()
     {
         var response = await _httpClient.GetAsync(_baseUrl);
         response.EnsureSuccessStatusCode();
@@ -23,7 +23,7 @@ public class EventService : IEventService
         return JsonSerializer.Deserialize<List<EventModel>>(content);
     }
 
-    public async Task<EventModel> GetEventByIdAsync(int id)
+    public async Task<EventModel> GetByIdAsync(int id)
     {
         var response = await _httpClient.GetAsync($"{_baseUrl}/{id}");
         response.EnsureSuccessStatusCode();
@@ -31,7 +31,7 @@ public class EventService : IEventService
         return JsonSerializer.Deserialize<EventModel>(content);
     }
 
-    public async Task<EventModel> CreateEventAsync(EventModel newEvent)
+    public async Task<EventModel> CreateAsync(EventModel newEvent)
     {
         var jsonContent = new StringContent(JsonSerializer.Serialize(newEvent), Encoding.UTF8, "application/json");
         var response = await _httpClient.PostAsync(_baseUrl, jsonContent);
@@ -40,14 +40,14 @@ public class EventService : IEventService
         return JsonSerializer.Deserialize<EventModel>(content);
     }
 
-    public async Task UpdateEventAsync(int id, EventModel updatedEvent)
+    public async Task UpdateAsync(int id, EventModel updatedEvent)
     {
         var jsonContent = new StringContent(JsonSerializer.Serialize(updatedEvent), Encoding.UTF8, "application/json");
         var response = await _httpClient.PutAsync($"{_baseUrl}/{id}", jsonContent);
         response.EnsureSuccessStatusCode();
     }
 
-    public async Task DeleteEventAsync(int id)
+    public async Task DeleteAsync(int id)
     {
         var response = await _httpClient.DeleteAsync($"{_baseUrl}/{id}");
         response.EnsureSuccessStatusCode();

@@ -7,11 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddHttpClient<EventService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
 builder.Services.AddHttpClient<UserService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<EventService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<EventStatusService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<EventImageService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<EventUserService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<RoleService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
 
-builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IEventStatusService, EventStatusService>();
+builder.Services.AddScoped<IEventImageService, EventImageService>();
+builder.Services.AddScoped<IEventUserService, EventUserService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 
 var app = builder.Build();
 

@@ -4,9 +4,9 @@ namespace Esportify.Shared.Services;
 
 public interface IUserService
 {
-    public Task<List<UserModel>> GetAllUsersAsync();
-    public Task<UserModel> GetUserByIdAsync(int id);
-    public Task<UserModel> CreateUserAsync(UserModel newUser);
-    public Task UpdateUserAsync(int id, UserModel updatedUser);
-    public Task DeleteUserAsync(int id);
+    public Task<List<UserModel>> GetAllAsync();
+    public Task<UserModel> GetByIdAsync(int id);
+    public Task<UserModel> CreateAsync(UserModel newUser);
+    public Task UpdateAsync(int id, UserModel updatedUser);
+    public Task DeleteAsync(int id);
 }
