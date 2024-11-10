@@ -8,8 +8,10 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddHttpClient<EventService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<UserService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
 
 builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 

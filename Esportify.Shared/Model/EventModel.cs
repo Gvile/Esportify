@@ -2,7 +2,6 @@
 
 namespace Esportify.Shared.Model;
 
-[Serializable]
 public class EventModel
 {
     [JsonPropertyName("id")] public int Id { get; set; }
