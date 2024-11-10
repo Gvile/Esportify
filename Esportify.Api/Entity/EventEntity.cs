@@ -3,7 +3,7 @@
 public class EventEntity
 {
     public int Id { get; set; }
-    public int EventStatusIs { get; set; }
+    public int EventStatusId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public int MaxUser { get; set; }

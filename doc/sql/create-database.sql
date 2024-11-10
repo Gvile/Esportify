@@ -15,7 +15,7 @@ CREATE TABLE "User" (
 
 CREATE TABLE "Event" (
                          "Id" SERIAL PRIMARY KEY,
-                         "EventStatusIs" int,
+                         "EventStatusId" int,
                          "Title" varchar(255),
                          "Description" varchar(255),
                          "MaxUser" int,
@@ -45,4 +45,4 @@ CREATE TABLE "Role" (
 );
 
 ALTER TABLE "User" ADD FOREIGN KEY ("RoleId") REFERENCES "Role" ("Id");
-ALTER TABLE "Event" ADD FOREIGN KEY ("EventStatusIs") REFERENCES "EventStatus" ("Id");
+ALTER TABLE "Event" ADD FOREIGN KEY ("EventStatusId") REFERENCES "EventStatus" ("Id");

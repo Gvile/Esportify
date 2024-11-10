@@ -1,10 +1,15 @@
 using Esportify.Components;
+using Esportify.Shared.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddHttpClient<EventService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+
+builder.Services.AddScoped<IEventService, EventService>();
 
 var app = builder.Build();
 

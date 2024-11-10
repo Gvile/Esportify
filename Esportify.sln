@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esportify.Client", "Esporti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esportify.Api", "Esportify.Api\Esportify.Api.csproj", "{4B9822CB-C31B-4122-9400-96F0E9060301}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Esportify.Shared", "Esportify.Shared\Esportify.Shared.csproj", "{5CDA3ACA-6ECB-45E6-B62F-466B14472649}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{4B9822CB-C31B-4122-9400-96F0E9060301}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B9822CB-C31B-4122-9400-96F0E9060301}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B9822CB-C31B-4122-9400-96F0E9060301}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CDA3ACA-6ECB-45E6-B62F-466B14472649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CDA3ACA-6ECB-45E6-B62F-466B14472649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CDA3ACA-6ECB-45E6-B62F-466B14472649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CDA3ACA-6ECB-45E6-B62F-466B14472649}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

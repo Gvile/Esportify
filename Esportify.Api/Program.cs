@@ -5,6 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost7095",
+        builder => builder
+            .WithOrigins("https://localhost:7095")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
@@ -19,6 +28,8 @@ builder.Services.AddScoped<IEventUserRepository, EventUserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 var app = builder.Build();
+
+app.UseCors("AllowLocalhost7095");
 
 if (app.Environment.IsDevelopment())
 {
