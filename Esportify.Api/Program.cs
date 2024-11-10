@@ -30,6 +30,12 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
 app.MapUserEndpoints();
+app.MapEventEndpoints();
+app.MapEventStatusEndpoints();
+app.MapEventImageEndpoints();
+app.MapEventUserEndpoints();
+app.MapRoleEndpoints();
 
 app.Run();
