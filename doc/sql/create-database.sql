@@ -25,6 +25,7 @@ CREATE TABLE "Event" (
 );
 
 CREATE TABLE "EventImage" (
+                              "Id" SERIAL PRIMARY KEY,
                               "EventId" int,
                               "Image" text
 );
@@ -35,6 +36,7 @@ CREATE TABLE "EventStatus" (
 );
 
 CREATE TABLE "EventUser" (
+                             "Id" SERIAL PRIMARY KEY,
                              "EventId" int,
                              "UserId" int
 );
