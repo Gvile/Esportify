@@ -10,12 +10,19 @@ public class GlobalEventBase : ComponentBase
 
     [Inject] private NavigationManager _navigationManager { get; set; }
     [Inject] private EventService _eventService { get; set; }
+    [Inject] private UserService _userService { get; set; }
     
     protected List<EventModel> Events { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
     {
         Events = await _eventService.GetAllAsync();
+        
+        foreach (var evt in Events)
+        {
+            var user = await _userService.GetByIdAsync(evt.OwnerUserId);
+            evt.OwnerUserPseudo = user.Pseudo;
+        }
     }
 
     #endregion
@@ -39,6 +46,12 @@ public class GlobalEventBase : ComponentBase
     protected void NavigateToSingleEventPage(int id)
     {
         _navigationManager.NavigateTo($"/SingleEvent/{id}");
+    }
+    
+    protected string GetFormattedDate(DateTime date)
+    {
+        var culture = new System.Globalization.CultureInfo("fr-FR");
+        return date.ToString("dddd, dd MMMM yyyy 'à' HH:mm", culture);
     }
 
     #endregion
