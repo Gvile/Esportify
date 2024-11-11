@@ -25,7 +25,8 @@ INSERT INTO "User" ("Email", "Password", "Pseudo", "RoleId") VALUES
 
 
 INSERT INTO "Event" ("EventStatusId", "Title", "Description", "MaxUser", "StartDate", "EndDate", "OwnerUserId") VALUES
-(1, 'Esport Tournament 2024', 'A major esports tournament for multiple games', 100, '2024-11-15 10:00:00', '2024-11-15 18:00:00', 1),
-(2, 'Casual Gaming Night', 'A relaxed evening of casual gaming with friends', 50, '2024-11-20 18:00:00', '2024-11-20 23:59:59', 2),
-(3, 'Annual Game Expo', 'The biggest gaming expo with the latest games and technologies', 200, '2024-12-01 09:00:00', '2024-12-01 18:00:00', 3),
-(1, 'Charity Speedrun Event', 'A speedrun event where all proceeds go to charity', 75, '2024-12-05 15:00:00', '2024-12-05 22:00:00', 1);
+(1, 'Online Duel Masters', 'An intense 1v1 tournament for duel enthusiasts', 50, '2024-11-10 14:00:00', '2024-11-10 18:00:00', 1),
+(2, 'Retro Gaming Night', 'Join us for a night of classic games and nostalgia', 30, '2024-11-09 20:00:00', '2024-11-09 23:59:59', 2),
+(3, 'Winter Championship', 'A month-end championship featuring the top competitive games', 150, '2024-12-20 10:00:00', '2024-12-20 22:00:00', 3),
+(1, 'Holiday Showdown', 'A festive tournament with prizes and holiday-themed events', 100, '2024-12-15 12:00:00', '2024-12-15 20:00:00', 4),
+(1, 'December Open LAN', 'An open LAN event welcoming players of all levels', 200, '2024-12-10 09:00:00', '2024-12-10 18:00:00', 5);
