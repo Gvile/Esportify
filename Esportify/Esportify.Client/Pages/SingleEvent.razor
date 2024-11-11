@@ -1,25 +1,31 @@
 ﻿@page "/SingleEvent/{Id:int}"
 @inherits SingleEventBase
+@rendermode InteractiveWebAssembly
 
 <PageTitle>Event</PageTitle>
 
 <div class="single-event-body">
     
     <div class="single-event-body-caroussel">
-    
+        <img class="home-body-caroussel__image" src="/img/vecteezy_professional-esports-logo-template-for-game-team-or-gaming_7994829-1.jpg" alt="caroussel image"/>
     </div>
     
     <div class="event-info">
         
         <div class="event-info__info">
             
-            <h3>@Event.Title</h3>
+            <p class="event-info__dates">Termine @GetFormattedDate(Event.EndDate)</p>
+                        
+            <h3 class="event-info__title">@Event.Title</h3>
+                        
+            <h3 class="event-info__owner">@Event.OwnerUserPseudo</h3>
             
         </div>
         
+        <p class="event-info__player-count">0/@Event.MaxUser</p>
+        
         <div class="event-info__button-container">
             
-            <button class="event-info__button event-info__button-join">Rejoindre</button>
             <button class="event-info__button event-info__button-inscription">S'inscrire</button>
             <button class="event-info__button event-info__button-edit">Modifier</button>
             
@@ -28,6 +34,8 @@
     </div>
     
     <div class="event-other-info">
+        
+        <p class="event-info__dates">@Event.Description</p>
         
     </div>
     
