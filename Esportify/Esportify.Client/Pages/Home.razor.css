@@ -14,10 +14,11 @@
 
 .home-body-caroussel
 {
-    width: 90%;
-    height: 300px;
-    
-    border: 1px solid red;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    margin: auto;
 }
 
 .home-body-caroussel__image

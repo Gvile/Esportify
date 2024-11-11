@@ -8,14 +8,21 @@ public class HomeBase : ComponentBase
 {
     #region Statements
 
+    [Inject] private HttpClient _httpClient { get; set; }
     [Inject] private NavigationManager _navigationManager { get; set; }
     [Inject] private EventService _eventService { get; set; }
     
     protected List<EventModel> Events { get; set; } = new();
+    
+    protected List<string> Images { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
     {
         Events = await _eventService.GetAllAsync();
+        
+        Images.Add(await EncodeImageToBase64Async("img/emanuel-ekstrom-I45hdPF5Na0-unsplash.jpg"));
+        Images.Add(await EncodeImageToBase64Async("img/stem-list-ryRU-cd1yas-unsplash.jpg"));
+        Images.Add(await EncodeImageToBase64Async("img/vecteezy_professional-esports-logo-template-for-game-team-or-gaming_7994829-1.jpg"));
     }
 
     #endregion
@@ -50,6 +57,17 @@ public class HomeBase : ComponentBase
     protected void NavigateToGlobalEventPage()
     {
         _navigationManager.NavigateTo("/GlobalEvent");
+    }
+
+    private async Task<string> EncodeImageToBase64Async(string relativeImagePath)
+    {
+        const string baseUri = "https://localhost:7095/";
+        var imageUrl = new Uri(new Uri(baseUri), relativeImagePath);
+
+        var imageBytes = await _httpClient.GetByteArrayAsync(imageUrl);
+        var base64String = Convert.ToBase64String(imageBytes);
+
+        return $"data:image/jpeg;base64,{base64String}";
     }
 
     #endregion

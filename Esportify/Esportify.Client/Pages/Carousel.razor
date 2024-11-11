@@ -1,0 +1,20 @@
+﻿@inherits CarouselBase
+
+<div class="carousel">
+    
+    <div class="carousel-container"
+         style="transform: translateX(@(-CurrentIndex * 100)%);">
+    
+        @foreach (var image in Images)
+        {
+            <div class="carousel-item">
+                <img class="carousel-image" src="@image" alt="Image Description"/>
+            </div>
+        }
+    
+    </div>
+    
+    <button class="carousel-button prev" @onclick="PreviousSlide">‹</button>
+    <button class="carousel-button next" @onclick="NextSlide">›</button>
+    
+</div>
