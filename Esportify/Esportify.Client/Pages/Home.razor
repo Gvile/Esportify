@@ -1,38 +1,52 @@
 ﻿@page "/"
 @inherits HomeBase
+@rendermode InteractiveWebAssembly
 
 <PageTitle>Home</PageTitle>
 
 <div class="home-body">
     
-    <h2>Esportify</h2>
+    <h2 class="home-body__title">Esportify</h2>
 
-    <p class="home-body__description">appetere constituam ullamcorper facilis viris sem salutatus orci deseruisse rutrum omnesque regione definitionem dico verterem ne velit tritani cubilia vivendo utroque interpretaris sollicitudin donec duo parturient eleifend pulvinar laudem simul justo definitiones liber omittam reque conclusionemque animal audire ne atomorum taciti vulputate mandamus voluptatibus consectetuer erat prompta luctus veniam legere doctus dictumst cu accommodare repudiandae dolore menandri vero cu </p>
+    <p class="home-body__description">Esportify est dédié aux passionnés d’e-sport et de jeux vidéo compétitifs, organisant des tournois en ligne et LAN pour tous les niveaux. En quelques clics, inscrivez-vous aux compétitions de vos jeux préférés, suivez votre progression et accédez aux fonctionnalités d’administration pour gérer vos équipes et vos matchs. Avec des événements réguliers et un encadrement professionnel, nous créons une expérience immersive et stimulante pour tous les joueurs, qu'ils soient amateurs ou confirmés. Rejoignez-nous et mesurez-vous aux meilleurs ! </p>
 
-    <div class="caroussel">
-    
+    <div class="home-body-caroussel">
+        <img class="home-body-caroussel__image" src="/img/emanuel-ekstrom-I45hdPF5Na0-unsplash.jpg" alt="caroussel image"/>
     </div>
 
     <div class="live-event">
     
         <h3>Events en cours</h3>
+        
+        @foreach(var evt in Events)
+        {
+            if (IsLiveEvent(evt))
+            {
+                <button class="live-event__event" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">
+                    @evt.Title
+                </button>
+            }
+        }
     
-        <div class="live-event__event"></div>
-        <div class="live-event__event"></div>
-    
-        <button class="live-event__button-more">Voir plus…</button>
+        <button class="live-event__button-more" @onpointerup="NavigateToGlobalEventPage">Voir plus…</button>
 
     </div>
 
     <div class="upcoming-event">
     
         <h3>Events à venir</h3>
+        
+        @foreach(var evt in Events)
+        {
+            if (!IsLiveEvent(evt))
+            {
+                <button class="upcoming-event__event" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">
+                    @evt.Title
+                </button>
+            }
+        }
     
-        <div class="upcoming-event__event"></div>
-        <div class="upcoming-event__event"></div>
-        <div class="upcoming-event__event"></div>
-    
-        <button class="upcoming-event__button-more">Voir plus…</button>
+        <button class="upcoming-event__button-more" @onpointerup="NavigateToGlobalEventPage">Voir plus…</button>
 
     </div>
     
