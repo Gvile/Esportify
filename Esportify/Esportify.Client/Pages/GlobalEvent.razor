@@ -1,5 +1,6 @@
 ﻿@page "/GlobalEvent"
 @inherits GlobalEventBase
+@rendermode InteractiveWebAssembly
 
 <PageTitle>GlobalEvent</PageTitle>
 
@@ -11,21 +12,15 @@
 
         <div class="live-event__event-container">
 
-            <div class="live-event__event">
-                <button class="live-event__join-button"></button>
-            </div>
-
-            <div class="live-event__event">
-                <button class="live-event__join-button"></button>
-            </div>
-
-            <div class="live-event__event">
-                <button class="live-event__join-button"></button>
-            </div>
-
-            <div class="live-event__event">
-                <button class="live-event__join-button"></button>
-            </div>
+            @foreach(var evt in Events)
+            {
+                if (IsLiveEvent(evt))
+                {
+                    <button class="live-event__event" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">
+                        <button class="live-event__join-button" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">Join</button>
+                    </button>
+                }
+            }
 
         </div>
 
@@ -34,58 +29,36 @@
     <div class="upcomming-event">
 
         <h2>Evenements à venir</h2>
-
-        <div class="upcomming-event__event">
-            
-            <div class="upcomming-event__left">
-                
-            </div>
-            
-            <div class="upcomming-event__right">
-                <button class="upcomming-event__inscription-button"></button>
-                <button class="upcomming-event__edit-button"></button>
-            </div>
-            
-        </div>
-
-        <div class="upcomming-event__event">
-            
-            <div class="upcomming-event__left">
-                
-            </div>
-            
-            <div class="upcomming-event__right">
-                <button class="upcomming-event__inscription-button"></button>
-                <button class="upcomming-event__edit-button"></button>
-            </div>
-            
-        </div>
         
-        <div class="upcomming-event__event">
+        @foreach(var evt in Events)
+        {
+            if (!IsLiveEvent(evt))
+            {
+                <button class="upcomming-event__event" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">
             
-            <div class="upcomming-event__left">
+                    <div class="upcomming-event__left">
                 
-            </div>
+                    </div>
             
-            <div class="upcomming-event__right">
-                <button class="upcomming-event__inscription-button"></button>
-                <button class="upcomming-event__edit-button"></button>
-            </div>
+                    <div class="upcomming-event__right">
+                        
+                        <button class="upcomming-event__inscription-button"
+                                @onpointerup="() => { }"
+                                @onpointerup:stopPropagation="true">
+                            Inscription
+                        </button>
+                        
+                        <button class="upcomming-event__edit-button"
+                                @onpointerup="() => NavigateToSingleEventPage(evt.Id)"
+                                @onpointerup:stopPropagation="true">
+                            Edit
+                        </button>
+                        
+                    </div>
             
-        </div>
-        
-        <div class="upcomming-event__event">
-            
-            <div class="upcomming-event__left">
-                
-            </div>
-            
-            <div class="upcomming-event__right">
-                <button class="upcomming-event__inscription-button"></button>
-                <button class="upcomming-event__edit-button"></button>
-            </div>
-            
-        </div>
+                </button>
+            }
+        }
 
     </div>
 
