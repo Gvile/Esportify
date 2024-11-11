@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@inherits MainLayoutBase
+@rendermode InteractiveWebAssembly
 
 <main class="main">
     
@@ -6,8 +7,8 @@
         
         <nav class="main-header__navbar">
             
-            <button class="main-header__nav-button">Accueil</button>
-            <button class="main-header__nav-button">Événements</button>
+            <button @onpointerup="NavigateToHome" class="main-header__nav-button">Accueil</button>
+            <button @onpointerup="NavigateToGlobalEvent" class="main-header__nav-button">Événements</button>
             <button class="main-header__nav-button">Connexion</button>
             <button class="main-header__nav-button">Contact</button>
 
