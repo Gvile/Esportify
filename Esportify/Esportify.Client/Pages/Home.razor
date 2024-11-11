@@ -22,11 +22,13 @@
         {
             if (IsLiveEvent(evt))
             {
-                <div class="live-event__event">@evt.Title</div>
+                <button class="live-event__event" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">
+                    @evt.Title
+                </button>
             }
         }
     
-        <button class="live-event__button-more">Voir plus…</button>
+        <button class="live-event__button-more" @onpointerup="NavigateToGlobalEventPage">Voir plus…</button>
 
     </div>
 
@@ -38,11 +40,13 @@
         {
             if (!IsLiveEvent(evt))
             {
-                <div class="upcoming-event__event">@evt.Title</div>
+                <button class="upcoming-event__event" @onpointerup="() => NavigateToSingleEventPage(evt.Id)">
+                    @evt.Title
+                </button>
             }
         }
     
-        <button class="upcoming-event__button-more">Voir plus…</button>
+        <button class="upcoming-event__button-more" @onpointerup="NavigateToGlobalEventPage">Voir plus…</button>
 
     </div>
     

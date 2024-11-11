@@ -8,6 +8,7 @@ public class HomeBase : ComponentBase
 {
     #region Statements
 
+    [Inject] private NavigationManager _navigationManager { get; set; }
     [Inject] private EventService _eventService { get; set; }
     
     protected List<EventModel> Events { get; set; } = new();
@@ -33,6 +34,16 @@ public class HomeBase : ComponentBase
         {
             return false;
         }
+    }
+    
+    protected void NavigateToSingleEventPage(int id)
+    {
+        _navigationManager.NavigateTo($"/SingleEvent/{id}");
+    }
+
+    protected void NavigateToGlobalEventPage()
+    {
+        _navigationManager.NavigateTo("/GlobalEvent");
     }
 
     #endregion
