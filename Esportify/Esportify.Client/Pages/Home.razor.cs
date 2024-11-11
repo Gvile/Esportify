@@ -36,6 +36,12 @@ public class HomeBase : ComponentBase
         }
     }
     
+    protected string GetFormattedDate(DateTime date)
+    {
+        var culture = new System.Globalization.CultureInfo("fr-FR");
+        return date.ToString("dddd dd MMMM yyyy 'à' HH:mm", culture);
+    }
+    
     protected void NavigateToSingleEventPage(int id)
     {
         _navigationManager.NavigateTo($"/SingleEvent/{id}");

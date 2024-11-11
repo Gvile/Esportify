@@ -41,13 +41,21 @@
     align-items: start;
 }
 
+.event-info__player-count
+{
+    align-self: center;
+}
+
 .live-event__right
 {
     width: 30%;
+    
+    position: relative;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     gap: 5px;
     margin: 5px;
 }
@@ -78,6 +86,8 @@
 .upcomming-event__left
 {
     width: 70%;
+
+    position: relative;
     
     display: flex;
     flex-direction: column;

@@ -51,7 +51,7 @@ public class GlobalEventBase : ComponentBase
     protected string GetFormattedDate(DateTime date)
     {
         var culture = new System.Globalization.CultureInfo("fr-FR");
-        return date.ToString("dddd, dd MMMM yyyy 'à' HH:mm", culture);
+        return date.ToString("dddd dd MMMM yyyy 'à' HH:mm", culture);
     }
 
     #endregion
