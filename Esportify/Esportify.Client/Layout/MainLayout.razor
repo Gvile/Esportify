@@ -1,5 +1,22 @@
 ﻿@inherits LayoutComponentBase
 
-<main>
-    @Body
+<main class="main">
+    
+    <div class="main-header">
+        
+        <nav class="main-header__navbar">
+            
+            <button class="main-header__nav-button">Accueil</button>
+            <button class="main-header__nav-button">Événements</button>
+            <button class="main-header__nav-button">Connexion</button>
+            <button class="main-header__nav-button">Contact</button>
+
+        </nav>
+
+    </div>
+    
+    <div class="main-body">
+        @Body
+    </div>
+    
 </main>
