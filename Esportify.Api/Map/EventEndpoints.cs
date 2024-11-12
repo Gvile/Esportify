@@ -1,5 +1,6 @@
 ﻿using Esportify.Api.Entity;
 using Esportify.Api.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esportify.Api.Map;
 
