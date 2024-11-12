@@ -1,6 +1,6 @@
 ﻿@page "/GlobalEvent"
 @inherits GlobalEventBase
-@rendermode InteractiveWebAssembly
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
 
 <PageTitle>GlobalEvent</PageTitle>
 
@@ -64,17 +64,20 @@
             
                     <div class="upcomming-event__right">
                         
-                        <button class="upcomming-event__inscription-button"
-                                @onpointerup="() => { }"
-                                @onpointerup:stopPropagation="true">
-                            S'inscrire
-                        </button>
+                        @if (!IsSubscribed(evt.Id))
+                        {
+                            <button class="upcomming-event__inscription-button"
+                                    @onpointerup="() => OnSubscription(evt)"
+                                    @onpointerup:stopPropagation="true">
+                                S'inscrire
+                            </button>
+                        }
                         
-                        <button class="upcomming-event__edit-button"
+                        @*<button class="upcomming-event__edit-button"
                                 @onpointerup="() => NavigateToSingleEventPage(evt.Id)"
                                 @onpointerup:stopPropagation="true">
                             Editer
-                        </button>
+                        </button>*@
                         
                     </div>
             

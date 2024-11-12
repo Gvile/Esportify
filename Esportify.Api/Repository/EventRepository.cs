@@ -25,12 +25,18 @@ public class EventRepository : IEventRepository
 
     public async Task AddAsync(EventEntity evt)
     {
+        evt.StartDate = DateTime.SpecifyKind(evt.StartDate, DateTimeKind.Utc);
+        evt.EndDate = DateTime.SpecifyKind(evt.EndDate, DateTimeKind.Utc);
+        
         await _context.Event.AddAsync(evt);
         await _context.SaveChangesAsync();
     }
 
     public async Task UpdateAsync(EventEntity evt)
     {
+        evt.StartDate = DateTime.SpecifyKind(evt.StartDate, DateTimeKind.Utc);
+        evt.EndDate = DateTime.SpecifyKind(evt.EndDate, DateTimeKind.Utc);
+        
         _context.Event.Update(evt);
         await _context.SaveChangesAsync();
     }

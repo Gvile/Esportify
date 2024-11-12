@@ -63,3 +63,17 @@
     width: 90%;
     height: 20px;
 }
+
+.event-info__edit-dates
+{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.event-info__edit-buttons
+{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
