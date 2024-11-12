@@ -15,6 +15,7 @@ public class SingleEventBase : ComponentBase
     [Inject] private UserService _userService { get; set; }
     [Inject] private EventUserService _eventUserService { get; set; }
 
+    private EventModel _lastEvent;
     protected EventModel Event { get; private set; } = new();
     protected List<EventUserModel> EventUsers { get; set; } = new();
     protected bool IsEditing { get; set; }
@@ -28,6 +29,7 @@ public class SingleEventBase : ComponentBase
     protected override async Task OnInitializedAsync()
     {
         Event = await _eventService.GetByIdAsync(Id);
+        _lastEvent = (EventModel)Event.Clone();
         
         var user = await _userService.GetByIdAsync(Event.OwnerUserId);
         Event.OwnerUserPseudo = user.Pseudo;
@@ -77,9 +79,8 @@ public class SingleEventBase : ComponentBase
     protected async Task OnSaveClicked()
     {
         IsEditing = false;
-        
-        Console.WriteLine(EventStartTime);
-        Console.WriteLine(EventEndTime);
+
+        _lastEvent = (EventModel)Event.Clone();
 
         await _eventService.UpdateAsync(Event);
         await InvokeAsync(StateHasChanged);
@@ -88,6 +89,8 @@ public class SingleEventBase : ComponentBase
     protected void OnCancelClicked()
     {
         IsEditing = false;
+        Event = (EventModel)_lastEvent.Clone();
+        StateHasChanged();
     }
 
     protected string GetFormattedDate(DateTime date)

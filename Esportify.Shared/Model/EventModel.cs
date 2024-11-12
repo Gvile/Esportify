@@ -2,7 +2,7 @@
 
 namespace Esportify.Shared.Model;
 
-public class EventModel
+public class EventModel : ICloneable
 {
     [JsonPropertyName("id")] public int Id { get; set; }
     [JsonPropertyName("eventStatusId")] public int EventStatusId { get; set; }
@@ -27,4 +27,20 @@ public class EventModel
     [JsonPropertyName("ownerUserId")] public int OwnerUserId { get; set; }
     
     public string OwnerUserPseudo { get; set; }
+    
+    public object Clone()
+    {
+        return new EventModel
+        {
+            Id = Id,
+            EventStatusId = EventStatusId,
+            Title = Title,
+            Description = Description,
+            MaxUser = MaxUser,
+            StartDate = StartDate,
+            EndDate = EndDate,
+            OwnerUserId = OwnerUserId,
+            OwnerUserPseudo = OwnerUserPseudo
+        };
+    }
 }
