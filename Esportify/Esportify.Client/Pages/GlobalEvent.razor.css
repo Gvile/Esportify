@@ -14,37 +14,50 @@
     padding: 20px;
 }
 
-.live-event__event-container
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    
-    gap: 20px;
-}
-
 .upcomming-event
 {
     width: 90%;
-
-    padding: 20px;
-
     border: 1px solid black;
+    padding: 20px;
 }
 
 .live-event__event
 {
-    width: 100px;
-    height: 100px;
-    
-    position: relative;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    border: 1px solid gray;
+}
+
+.live-event__left
+{
+    width: 70%;
     
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: start;
+}
 
-    border: 1px solid gray;
+.event-info__player-count
+{
+    align-self: center;
+}
+
+.live-event__right
+{
+    width: 30%;
+    
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    gap: 5px;
+    margin: 5px;
 }
 
 .upcomming-event__event
@@ -62,9 +75,6 @@
 {
     width: 90%;
     height: 25px;
-    
-    position: absolute;
-    bottom: 5px;
 }
 
 .upcomming-event__inscription-button, 
@@ -76,6 +86,13 @@
 .upcomming-event__left
 {
     width: 70%;
+
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: start;
 }
 
 .upcomming-event__right 

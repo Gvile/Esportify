@@ -12,4 +12,6 @@ public class EventModel
     [JsonPropertyName("startDate")] public DateTime StartDate { get; set; }
     [JsonPropertyName("endDate")] public DateTime EndDate { get; set; }
     [JsonPropertyName("ownerUserId")] public int OwnerUserId { get; set; }
+    
+    public string OwnerUserPseudo { get; set; }
 }
