@@ -10,19 +10,35 @@ public class HomeBase : ComponentBase
 
     [Inject] private HttpClient _httpClient { get; set; }
     [Inject] private NavigationManager _navigationManager { get; set; }
+    [Inject] private UserService _userService { get; set; }
     [Inject] private EventService _eventService { get; set; }
+    [Inject] private IAuthService _authService { get; set; }
     
     protected List<EventModel> Events { get; set; } = new();
     
     protected List<string> Images { get; set; } = new();
-
-    protected override async Task OnInitializedAsync()
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Events = await _eventService.GetAllAsync();
+        if (firstRender)
+        {
+            await _userService.GetAllAsync();
+            
+            if (await _authService.IsLoggedInAsync())
+            {
+                Events = await _eventService.GetAllAsync();
         
-        Images.Add(await EncodeImageToBase64Async("img/emanuel-ekstrom-I45hdPF5Na0-unsplash.jpg"));
-        Images.Add(await EncodeImageToBase64Async("img/stem-list-ryRU-cd1yas-unsplash.jpg"));
-        Images.Add(await EncodeImageToBase64Async("img/vecteezy_professional-esports-logo-template-for-game-team-or-gaming_7994829-1.jpg"));
+                Images.Add(await EncodeImageToBase64Async("img/emanuel-ekstrom-I45hdPF5Na0-unsplash.jpg"));
+                Images.Add(await EncodeImageToBase64Async("img/stem-list-ryRU-cd1yas-unsplash.jpg"));
+                Images.Add(await EncodeImageToBase64Async("img/vecteezy_professional-esports-logo-template-for-game-team-or-gaming_7994829-1.jpg"));
+            }
+            else
+            {
+                _navigationManager.NavigateTo("/Login");
+            }
+            
+            StateHasChanged();
+        }
     }
 
     #endregion

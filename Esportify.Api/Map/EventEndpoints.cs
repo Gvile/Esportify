@@ -1,5 +1,6 @@
 ﻿using Esportify.Api.Entity;
 using Esportify.Api.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esportify.Api.Map;
 
@@ -7,7 +8,7 @@ public static class EventEndpoints
 {
     public static void MapEventEndpoints(this WebApplication app)
     {
-        app.MapGet("/events", async (IEventRepository eventRepository) =>
+        app.MapGet("/events", [Authorize] async (IEventRepository eventRepository) =>
         {
             var evts = await eventRepository.GetAllAsync();
             return Results.Ok(evts);

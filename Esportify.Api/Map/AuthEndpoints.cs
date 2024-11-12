@@ -1,4 +1,5 @@
 ﻿using Esportify.Api.Services;
+using Esportify.Shared.Model;
 
 namespace Esportify.Api.Map;
 
@@ -6,9 +7,9 @@ public static class AuthEndpoints
 {
     public static void MapAuthEndpoints(this WebApplication app)
     {
-        app.MapPost("/login", async (string email, string password, AuthService authService) =>
+        app.MapPost("/login", async (LoginRequest loginRequest, AuthService authService) =>
         {
-            var token = await authService.LoginAsync(email, password);
+            var token = await authService.LoginAsync(loginRequest.Email, loginRequest.Password);
             return token != null ? Results.Ok(new { Token = token }) : Results.Unauthorized();
         });
 

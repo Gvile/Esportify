@@ -23,6 +23,8 @@ public class AuthService
     public async Task<string> LoginAsync(string email, string password)
     {
         var user = await _context.User.FirstOrDefaultAsync(u => u.Email == email);
+        //Console.WriteLine($"password: {password}, hashed: {PasswordHasherUtils.HashPassword(password)} || user.Password {user.Password}");
+        
         if (user == null || !PasswordHasherUtils.VerifyPassword(password, user.Password))
         {
             return null; // Email ou mot de passe incorrect

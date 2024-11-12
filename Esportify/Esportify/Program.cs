@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using Esportify.Components;
 using Esportify.Shared.Services;
 
@@ -20,6 +21,9 @@ builder.Services.AddScoped<IEventStatusService, EventStatusService>();
 builder.Services.AddScoped<IEventImageService, EventImageService>();
 builder.Services.AddScoped<IEventUserService, EventUserService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddBlazoredLocalStorage();
 
 var app = builder.Build();
 
