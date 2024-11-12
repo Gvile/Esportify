@@ -9,8 +9,21 @@ public class EventModel
     [JsonPropertyName("title")] public string Title { get; set; }
     [JsonPropertyName("description")] public string Description { get; set; }
     [JsonPropertyName("maxUser")] public int MaxUser { get; set; }
-    [JsonPropertyName("startDate")] public DateTime StartDate { get; set; }
-    [JsonPropertyName("endDate")] public DateTime EndDate { get; set; }
+    
+    private DateTime _startDate;
+    [JsonPropertyName("startDate")] public DateTime StartDate
+    {
+        get => _startDate;
+        set => _startDate = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+    }
+
+    private DateTime _endDate;
+    [JsonPropertyName("endDate")] public DateTime EndDate
+    {
+        get => _endDate;
+        set => _endDate = DateTime.SpecifyKind(value, DateTimeKind.Utc);
+    }
+    
     [JsonPropertyName("ownerUserId")] public int OwnerUserId { get; set; }
     
     public string OwnerUserPseudo { get; set; }

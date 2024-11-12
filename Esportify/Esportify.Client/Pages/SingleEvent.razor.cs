@@ -18,6 +18,10 @@ public class SingleEventBase : ComponentBase
     protected EventModel Event { get; private set; } = new();
     protected List<EventUserModel> EventUsers { get; set; } = new();
     protected bool IsEditing { get; set; }
+    protected string FormatedDate => GetFormattedDate(Event.EndDate);
+    
+    protected TimeSpan? EventStartTime { get; set; }
+    protected TimeSpan? EventEndTime { get; set; }
     
     private UserModel _user;
     
@@ -73,8 +77,12 @@ public class SingleEventBase : ComponentBase
     protected async Task OnSaveClicked()
     {
         IsEditing = false;
+        
+        Console.WriteLine(EventStartTime);
+        Console.WriteLine(EventEndTime);
 
         await _eventService.UpdateAsync(Event);
+        await InvokeAsync(StateHasChanged);
     }
     
     protected void OnCancelClicked()

@@ -14,14 +14,18 @@
         
         <div class="event-info__info">
             
-            <p class="event-info__dates">Termine @GetFormattedDate(Event.EndDate)</p>
-            
             @if (IsEditing)
             {
+                <div class="event-info__edit-dates">
+                    <DateTimePickerComponent @bind-DateAndTime="Event.StartDate" />
+                    <DateTimePickerComponent @bind-DateAndTime="Event.EndDate" />
+                </div>
+                
                 <input type="text" @bind="Event.Title" class="event-info__title-input" placeholder="@Event.Title" />
             }
             else
             {
+                <p class="event-info__dates">Termine @FormatedDate</p>
                 <h3 class="event-info__title">@Event.Title</h3>
             }
             
@@ -48,7 +52,10 @@
             }
             else
             {
-                <button @onpointerup="OnEditClicked" class="event-info__button event-info__button-edit">Modifier</button>
+                if (Event.StartDate > DateTime.Now)
+                {
+                    <button @onpointerup="OnEditClicked" class="event-info__button event-info__button-edit">Modifier</button>
+                }
             }
             
         </div>
