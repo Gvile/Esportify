@@ -9,6 +9,7 @@ CREATE TABLE "User" (
                         "Id" SERIAL PRIMARY KEY,
                         "Email" varchar(255),
                         "Password" varchar(255),
+                        "Salt" varchar(255),
                         "Pseudo" varchar(20),
                         "RoleId" int
 );

@@ -1,5 +1,6 @@
 ﻿using Esportify.Api.Entity;
 using Esportify.Api.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esportify.Api.Map;
 
@@ -19,13 +20,13 @@ public static class EventEndpoints
             return evt != null ? Results.Ok(evt) : Results.NotFound();
         });
 
-        app.MapPost("/events", async (EventEntity evt, IEventRepository eventRepository) =>
+        app.MapPost("/events", [Authorize] async (EventEntity evt, IEventRepository eventRepository) =>
         {
             await eventRepository.AddAsync(evt);
             return Results.Created($"/events/{evt.Id}", evt);
         });
 
-        app.MapPut("/events/{id}", async (int id, EventEntity evt, IEventRepository eventRepository) =>
+        app.MapPut("/events/{id}", [Authorize] async (int id, EventEntity evt, IEventRepository eventRepository) =>
         {
             if (id != evt.Id)
             {
@@ -35,7 +36,7 @@ public static class EventEndpoints
             return Results.NoContent();
         });
 
-        app.MapDelete("/events/{id}", async (int id, IEventRepository eventRepository) =>
+        app.MapDelete("/events/{id}", [Authorize] async (int id, IEventRepository eventRepository) =>
         {
             await eventRepository.DeleteAsync(id);
             return Results.NoContent();
