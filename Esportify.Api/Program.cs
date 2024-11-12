@@ -66,6 +66,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseRouting();
 
 app.MapAuthEndpoints();
@@ -75,8 +78,5 @@ app.MapEventStatusEndpoints();
 app.MapEventImageEndpoints();
 app.MapEventUserEndpoints();
 app.MapRoleEndpoints();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.Run();

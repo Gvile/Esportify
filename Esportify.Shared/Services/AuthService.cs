@@ -30,10 +30,6 @@ public class AuthService : IAuthService
         {
             var content = await response.Content.ReadAsStringAsync();
             var result = JsonSerializer.Deserialize<TokenModel>(content);
-            
-            Console.WriteLine("1 " + content);
-            Console.WriteLine("2 " + result);
-            Console.WriteLine("3 " + result?.Token);
 
             if (result != null && !string.IsNullOrEmpty(result.Token))
             {

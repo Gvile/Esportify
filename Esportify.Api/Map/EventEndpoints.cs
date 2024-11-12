@@ -8,7 +8,7 @@ public static class EventEndpoints
 {
     public static void MapEventEndpoints(this WebApplication app)
     {
-        app.MapGet("/events", [Authorize] async (IEventRepository eventRepository) =>
+        app.MapGet("/events", async (IEventRepository eventRepository) =>
         {
             var evts = await eventRepository.GetAllAsync();
             return Results.Ok(evts);
