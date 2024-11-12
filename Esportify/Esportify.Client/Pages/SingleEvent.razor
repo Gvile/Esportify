@@ -26,7 +26,11 @@
         
         <div class="event-info__button-container">
             
-            <button class="event-info__button event-info__button-inscription">S'inscrire</button>
+            @if (!IsSubscribed())
+            {
+                <button @onpointerup="OnSubscription" class="event-info__button event-info__button-inscription">S'inscrire</button>
+            }
+            
             <button class="event-info__button event-info__button-edit">Modifier</button>
             
         </div>
