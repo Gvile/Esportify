@@ -17,6 +17,7 @@ public class SingleEventBase : ComponentBase
 
     protected EventModel Event { get; private set; } = new();
     protected List<EventUserModel> EventUsers { get; set; } = new();
+    protected bool IsEditing { get; set; }
     
     private UserModel _user;
     
@@ -62,6 +63,23 @@ public class SingleEventBase : ComponentBase
     {
         var eventUser = EventUsers.FirstOrDefault(e => e.EventId == Event.Id && e.UserId == _user.Id);
         return eventUser != null;
+    }
+
+    protected void OnEditClicked()
+    {
+        IsEditing = true;
+    }
+    
+    protected async Task OnSaveClicked()
+    {
+        IsEditing = false;
+
+        await _eventService.UpdateAsync(Event);
+    }
+    
+    protected void OnCancelClicked()
+    {
+        IsEditing = false;
     }
 
     protected string GetFormattedDate(DateTime date)

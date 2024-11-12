@@ -33,6 +33,9 @@ public class EventService : IEventService
 
     public async Task<EventModel> CreateAsync(EventModel newEvent)
     {
+        newEvent.StartDate = newEvent.StartDate.ToUniversalTime();
+        newEvent.EndDate = newEvent.EndDate.ToUniversalTime();
+        
         var jsonContent = new StringContent(JsonSerializer.Serialize(newEvent), Encoding.UTF8, "application/json");
         var response = await _httpClient.PostAsync(_baseUrl, jsonContent);
         response.EnsureSuccessStatusCode();
@@ -40,10 +43,13 @@ public class EventService : IEventService
         return JsonSerializer.Deserialize<EventModel>(content);
     }
 
-    public async Task UpdateAsync(int id, EventModel updatedEvent)
+    public async Task UpdateAsync(EventModel updatedEvent)
     {
+        updatedEvent.StartDate = updatedEvent.StartDate.ToUniversalTime();
+        updatedEvent.EndDate = updatedEvent.EndDate.ToUniversalTime();
+        
         var jsonContent = new StringContent(JsonSerializer.Serialize(updatedEvent), Encoding.UTF8, "application/json");
-        var response = await _httpClient.PutAsync($"{_baseUrl}/{id}", jsonContent);
+        var response = await _httpClient.PutAsync($"{_baseUrl}/{updatedEvent.Id}", jsonContent);
         response.EnsureSuccessStatusCode();
     }
 
