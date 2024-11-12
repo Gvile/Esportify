@@ -1,5 +1,6 @@
 ﻿using Esportify.Api.Entity;
 using Esportify.Api.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Esportify.Api.Map;
 
@@ -19,13 +20,13 @@ public static class UserEndpoints
             return user != null ? Results.Ok(user) : Results.NotFound();
         });
 
-        app.MapPost("/users", async (UserEntity user, IUserRepository userRepository) =>
+        app.MapPost("/users", [Authorize] async (UserEntity user, IUserRepository userRepository) =>
         {
             await userRepository.AddAsync(user);
             return Results.Created($"/users/{user.Id}", user);
         });
 
-        app.MapPut("/users/{id}", async (int id, UserEntity user, IUserRepository userRepository) =>
+        app.MapPut("/users/{id}", [Authorize] async (int id, UserEntity user, IUserRepository userRepository) =>
         {
             if (id != user.Id)
             {
@@ -35,7 +36,7 @@ public static class UserEndpoints
             return Results.NoContent();
         });
 
-        app.MapDelete("/users/{id}", async (int id, IUserRepository userRepository) =>
+        app.MapDelete("/users/{id}", [Authorize] async (int id, IUserRepository userRepository) =>
         {
             await userRepository.DeleteAsync(id);
             return Results.NoContent();
