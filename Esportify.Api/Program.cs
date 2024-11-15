@@ -11,9 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost7095",
+    options.AddPolicy("AllowLocalhostAndAzure",
         builder => builder
-            .WithOrigins("https://localhost:7095")
+            //.WithOrigins("https://esportify-app.azurewebsites.net", "https://localhost:7095", "http://localhost:7095")
+            .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
@@ -55,8 +56,6 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 
 var app = builder.Build();
 
-app.UseCors("AllowLocalhost7095");
-
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -67,9 +66,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
-app.UseAuthorization();
 
 app.UseRouting();
+app.UseCors("AllowLocalhostAndAzure");
+app.UseAuthorization();
 
 app.MapAuthEndpoints();
 app.MapUserEndpoints();

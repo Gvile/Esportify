@@ -26,6 +26,11 @@ public class LoginBase : ComponentBase
         }
     }
 
+    protected void NavigateToSignUp()
+    {
+        _navigationManager.NavigateTo($"/SignUp");
+    }
+
     protected class LoginModel
     {
         public string Email { get; set; }

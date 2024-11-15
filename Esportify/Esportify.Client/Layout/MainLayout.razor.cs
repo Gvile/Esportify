@@ -21,6 +21,11 @@ public class MainLayoutBase : LayoutComponentBase
     {
         _navigationManager.NavigateTo("/GlobalEvent");
     }
+    
+    protected void NavigateToLoginPage()
+    {
+        _navigationManager.NavigateTo("/Login");
+    }
 
     #endregion
 }

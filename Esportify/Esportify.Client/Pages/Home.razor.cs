@@ -22,20 +22,11 @@ public class HomeBase : ComponentBase
     {
         if (firstRender)
         {
-            await _userService.GetAllAsync();
-            
-            if (await _authService.IsLoggedInAsync())
-            {
-                Events = await _eventService.GetAllAsync();
+            Events = await _eventService.GetAllAsync();
         
-                Images.Add(await EncodeImageToBase64Async("img/emanuel-ekstrom-I45hdPF5Na0-unsplash.jpg"));
-                Images.Add(await EncodeImageToBase64Async("img/stem-list-ryRU-cd1yas-unsplash.jpg"));
-                Images.Add(await EncodeImageToBase64Async("img/vecteezy_professional-esports-logo-template-for-game-team-or-gaming_7994829-1.jpg"));
-            }
-            else
-            {
-                _navigationManager.NavigateTo("/Login");
-            }
+            Images.Add(await EncodeImageToBase64Async("img/emanuel-ekstrom-I45hdPF5Na0-unsplash.jpg"));
+            Images.Add(await EncodeImageToBase64Async("img/stem-list-ryRU-cd1yas-unsplash.jpg"));
+            Images.Add(await EncodeImageToBase64Async("img/vecteezy_professional-esports-logo-template-for-game-team-or-gaming_7994829-1.jpg"));
             
             StateHasChanged();
         }
@@ -77,7 +68,7 @@ public class HomeBase : ComponentBase
 
     private async Task<string> EncodeImageToBase64Async(string relativeImagePath)
     {
-        const string baseUri = "https://localhost:7095/";
+        const string baseUri = "https://esportify-app.azurewebsites.net/";
         var imageUrl = new Uri(new Uri(baseUri), relativeImagePath);
 
         var imageBytes = await _httpClient.GetByteArrayAsync(imageUrl);

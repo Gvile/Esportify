@@ -8,12 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
-builder.Services.AddHttpClient<UserService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
-builder.Services.AddHttpClient<EventService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
-builder.Services.AddHttpClient<EventStatusService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
-builder.Services.AddHttpClient<EventImageService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
-builder.Services.AddHttpClient<EventUserService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
-builder.Services.AddHttpClient<RoleService>(client => { client.BaseAddress = new Uri("https://localhost:7102/"); });
+builder.Services.AddHttpClient<UserService>(client => { client.BaseAddress = new Uri("https://esportify-api.azurewebsites.net/"); });
+builder.Services.AddHttpClient<EventService>(client => { client.BaseAddress = new Uri("https://esportify-api.azurewebsites.net/"); });
+builder.Services.AddHttpClient<EventStatusService>(client => { client.BaseAddress = new Uri("https://esportify-api.azurewebsites.net/"); });
+builder.Services.AddHttpClient<EventImageService>(client => { client.BaseAddress = new Uri("https://esportify-api.azurewebsites.net/"); });
+builder.Services.AddHttpClient<EventUserService>(client => { client.BaseAddress = new Uri("https://esportify-api.azurewebsites.net/"); });
+builder.Services.AddHttpClient<RoleService>(client => { client.BaseAddress = new Uri("https://esportify-api.azurewebsites.net/"); });
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IEventService, EventService>();

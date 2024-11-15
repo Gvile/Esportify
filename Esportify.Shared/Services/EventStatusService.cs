@@ -12,7 +12,7 @@ public class EventStatusService : IEventStatusService
     public EventStatusService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _baseUrl = "https://localhost:7102/eventStatus";
+        _baseUrl = "https://esportify-api.azurewebsites.net/eventStatus";
     }
 
     public async Task<List<EventStatusModel>> GetAllAsync()

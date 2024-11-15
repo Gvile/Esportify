@@ -25,23 +25,26 @@ public class AuthService
         var user = await _context.User.FirstOrDefaultAsync(u => u.Email == email);
         //Console.WriteLine($"password: {password}, hashed: {PasswordHasherUtils.HashPassword(password)} || user.Password {user.Password}");
         
-        if (user == null || !PasswordHasherUtils.VerifyPassword(password, user.Password))
+        //if (user == null || !PasswordHasherUtils.VerifyPassword(password, user.Password)) 
+        if (user == null || user.Password != password)
         {
             return null; // Email ou mot de passe incorrect
         }
         return GenerateJwtToken(user);
     }
-
-    public async Task RegisterAsync(string email, string password)
+    
+    public async Task RegisterAsync(string email, string password, string pseudo)
     {
         string passwordHash = PasswordHasherUtils.HashPassword(password);
-
+        Console.WriteLine(passwordHash);
         var newUser = new UserEntity
         {
             Email = email,
-            Password = passwordHash
+            Password = passwordHash,
+            Pseudo = pseudo,
+            RoleId = 1
         };
-
+        Console.WriteLine("Utilisateur à ajouter: " + newUser);
         _context.User.Add(newUser);
         await _context.SaveChangesAsync();
     }

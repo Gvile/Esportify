@@ -12,7 +12,7 @@ public class UserService : IUserService
     public UserService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _baseUrl = "https://localhost:7102/users";
+        _baseUrl = "https://esportify-api.azurewebsites.net/users";
     }
 
     public async Task<List<UserModel>> GetAllAsync()

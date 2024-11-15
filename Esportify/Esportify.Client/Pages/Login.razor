@@ -18,6 +18,8 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Login</button>
+    
+    <p>Vous n'avez pas encore de compte? <button @onpointerup="NavigateToSignUp">S'inscrire</button></p>
 
     @if (loginError != null)
     {

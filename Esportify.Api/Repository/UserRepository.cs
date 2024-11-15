@@ -1,5 +1,6 @@
 ﻿using Esportify.Api.App;
 using Esportify.Api.Entity;
+using Esportify.Shared.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace Esportify.Api.Repository;
@@ -25,7 +26,17 @@ public class UserRepository : IUserRepository
 
     public async Task AddAsync(UserEntity user)
     {
-        await _context.User.AddAsync(user);
+        string passwordHash = PasswordHasherUtils.HashPassword(user.Password);
+        Console.WriteLine(passwordHash);
+        var newUser = new UserEntity
+        {
+            Email = user.Email,
+            Password = passwordHash,
+            Pseudo = user.Pseudo,
+            RoleId = 1,
+        };
+        Console.WriteLine(newUser.ToString());
+        await _context.User.AddAsync(newUser);
         await _context.SaveChangesAsync();
     }
 

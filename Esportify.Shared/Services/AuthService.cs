@@ -16,7 +16,7 @@ public class AuthService : IAuthService
     {
         _httpClient = httpClient;
         _localStorage = localStorage;
-        _baseUrl = "https://localhost:7102/login";
+        _baseUrl = "https://esportify-api.azurewebsites.net/login";
     }
 
     public async Task<bool> LoginAsync(string email, string password)
@@ -43,12 +43,14 @@ public class AuthService : IAuthService
         return false; // Échec de l'authentification
     }
 
-    public async Task<bool> RegisterAsync(string email, string password)
+    public async Task<bool> RegisterAsync(string email, string password, string pseudo)
     {
-        var registerData = new { Email = email, Password = password };
+        var registerData = new { Email = email, Password = password, Pseudo = pseudo };
+        var json = JsonSerializer.Serialize(registerData);
+        Console.WriteLine("Json envoyé: " + json);
         var jsonContent = new StringContent(JsonSerializer.Serialize(registerData), Encoding.UTF8, "application/json");
-
-        var response = await _httpClient.PostAsync($"{_baseUrl}/register", jsonContent);
+        //var response = await _httpClient.PostAsync($"{_baseUrl}/register", jsonContent);
+        var response = await _httpClient.PostAsync("https://esportify-api.azurewebsites.net/register", jsonContent);
         return response.IsSuccessStatusCode;
     }
 

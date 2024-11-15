@@ -13,10 +13,19 @@ public static class AuthEndpoints
             return token != null ? Results.Ok(new { Token = token }) : Results.Unauthorized();
         });
 
-        app.MapPost("/register", async (string email, string password, AuthService authService) =>
+        app.MapPost("/register", async (RegisterRequest registerRequest, AuthService authService) =>
         {
-            await authService.RegisterAsync(email, password);
+            Console.WriteLine("Coucou c l'appel à l'api");
+            await authService.RegisterAsync(registerRequest.Email, registerRequest.Password, registerRequest.Pseudo);
             return Results.Ok(new { Message = "User registered successfully" });
         });
     }
+    
+    public class RegisterRequest
+    {
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Pseudo { get; set; }
+    }
+
 }

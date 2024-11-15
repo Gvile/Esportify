@@ -12,7 +12,7 @@ public class EventUserService : IEventUserService
     public EventUserService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _baseUrl = "https://localhost:7102/eventUsers";
+        _baseUrl = "https://esportify-api.azurewebsites.net/eventUsers";
     }
 
     public async Task<List<EventUserModel>> GetAllAsync()

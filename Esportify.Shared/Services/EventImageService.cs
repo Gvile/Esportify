@@ -12,7 +12,7 @@ public class EventImageService : IEventImageService
     public EventImageService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _baseUrl = "https://localhost:7102/eventImages";
+        _baseUrl = "https://esportify-api.azurewebsites.net/eventImages";
     }
 
     public async Task<List<EventImageModel>> GetAllAsync()

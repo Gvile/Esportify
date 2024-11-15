@@ -12,7 +12,7 @@ public class RoleService : IRoleService
     public RoleService(HttpClient httpClient)
     {
         _httpClient = httpClient;
-        _baseUrl = "https://localhost:7102/roles";
+        _baseUrl = "https://esportify-api.azurewebsites.net/roles";
     }
 
     public async Task<List<RoleModel>> GetAllAsync()

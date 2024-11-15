@@ -15,7 +15,7 @@ public class EventService : IEventService
     {
         _httpClient = httpClient;
         _localStorage = localStorage;
-        _baseUrl = "https://localhost:7102/events";
+        _baseUrl = "https://esportify-api.azurewebsites.net/events";
     }
 
     public async Task<List<EventModel>> GetAllAsync()
@@ -50,29 +50,9 @@ public class EventService : IEventService
     {
         updatedEvent.StartDate = updatedEvent.StartDate.ToUniversalTime();
         updatedEvent.EndDate = updatedEvent.EndDate.ToUniversalTime();
-
-        // Récupérer le token JWT depuis le LocalStorage ou la méthode appropriée
-        var token = await _localStorage.GetItemAsync<string>("authToken");
-    
-        if (string.IsNullOrEmpty(token))
-        {
-            throw new UnauthorizedAccessException("User is not authenticated.");
-        }
-
+        
         var jsonContent = new StringContent(JsonSerializer.Serialize(updatedEvent), Encoding.UTF8, "application/json");
-
-        // Création de la requête HTTP avec le token JWT dans l'en-tête Authorization
-        var requestMessage = new HttpRequestMessage(HttpMethod.Put, $"{_baseUrl}/{updatedEvent.Id}")
-        {
-            Content = jsonContent
-        };
-
-        requestMessage.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-        // Envoyer la requête HTTP
-        var response = await _httpClient.SendAsync(requestMessage);
-
-        // Vérifier si la réponse est réussie, sinon lever une exception
+        var response = await _httpClient.PutAsync($"{_baseUrl}/{updatedEvent.Id}", jsonContent);
         response.EnsureSuccessStatusCode();
     }
 
